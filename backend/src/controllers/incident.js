@@ -55,7 +55,7 @@ exports.getById = async (req, res) => {
   try {
     const incident = await incidentService.getById(id);
 
-    if (!incident) return res.status(500).send();
+    if (!incident) return res.status(404).send();
 
     return res.status(204).json(incident);
   } catch (err) {
