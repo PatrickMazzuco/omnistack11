@@ -24,3 +24,13 @@ exports.createOng = async (req, res) => {
     return res.status(500).json({ message: 'Internal server error.' });
   }
 };
+
+exports.getOngs = async (req, res) => {
+  try {
+    const ongs = await ongService.getOngs();
+    return res.json(ongs);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error.' });
+  }
+};

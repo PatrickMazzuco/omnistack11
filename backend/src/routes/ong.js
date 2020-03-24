@@ -9,4 +9,9 @@ const router = Router();
 // @access  Public
 router.post('/ongs', ongController.createOng);
 
+// @route   GET /ongs
+// @desc    Fetch all ong
+// @access  Public
+router.get('/ongs', ongController.getOngs);
+
 export default router;
