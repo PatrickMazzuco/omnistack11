@@ -21,8 +21,14 @@ exports.create = async (req, res) => {
 };
 
 exports.getAll = async (req, res) => {
+  const { page = 1 } = req.query;
+
   try {
-    const incidents = await incidentService.getAll();
+    const incidents = await incidentService.getAll(page);
+
+    const count = await incidentService.count();
+    res.header('X-Total-Count', count['count(*)']);
+
     return res.json(incidents);
   } catch (err) {
     console.error(err);

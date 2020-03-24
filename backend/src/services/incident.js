@@ -5,8 +5,11 @@ exports.create = async (incident) => {
   return id;
 };
 
-exports.getAll = async () => {
-  const incidents = await database('incidents').select('*');
+exports.getAll = async (page) => {
+  const incidents = await database('incidents')
+    .limit(5)
+    .offset(page * 5 - 5)
+    .select('*');
   return incidents;
 };
 
@@ -18,4 +21,9 @@ exports.getById = async (id) => {
 exports.delete = async (id) => {
   const incident = await database('incidents').where('id', id).delete();
   return incident;
+};
+
+exports.count = async () => {
+  const [count] = await database('incidents').count();
+  return count;
 };
