@@ -14,6 +14,11 @@ router.post('/incidents', incidentController.create);
 // @access  Public
 router.get('/incidents', incidentController.getAll);
 
+// @route   GET /incidents/id
+// @desc    Fetch incident by id
+// @access  Public
+router.get('/incidents:id', incidentController.getById);
+
 // @route   DELETE /incidents/id
 // @desc    Delete incident by id
 // @access  Public

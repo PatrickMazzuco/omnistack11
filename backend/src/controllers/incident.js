@@ -48,3 +48,18 @@ exports.delete = async (req, res) => {
     return res.status(500).json({ message: 'Internal server error.' });
   }
 };
+
+exports.getById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const incident = await incidentService.getById(id);
+
+    if (!incident) return res.status(500).send();
+
+    return res.status(204).json(incident);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error.' });
+  }
+};
