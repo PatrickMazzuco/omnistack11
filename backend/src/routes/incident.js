@@ -9,4 +9,9 @@ const router = Router();
 // @access  Public
 router.post('/incidents', incidentController.create);
 
+// @route   GET /incidents
+// @desc    Fetch all incident
+// @access  Public
+router.get('/incidents', incidentController.getAll);
+
 export default router;

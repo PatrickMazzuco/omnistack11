@@ -19,3 +19,13 @@ exports.create = async (req, res) => {
     return res.status(500).json({ message: 'Internal server error.' });
   }
 };
+
+exports.getAll = async (req, res) => {
+  try {
+    const incidents = await incidentService.getAll();
+    return res.json(incidents);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error.' });
+  }
+};
