@@ -34,3 +34,15 @@ exports.getAll = async (req, res) => {
     return res.status(500).json({ message: 'Internal server error.' });
   }
 };
+
+exports.getIncidentsByOng = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const incidents = await ongService.getIncidentsByOng(id);
+    return res.json(incidents);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error.' });
+  }
+};

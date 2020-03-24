@@ -9,3 +9,8 @@ exports.getAll = async () => {
   const ongs = await database('ongs').select('*');
   return ongs;
 };
+
+exports.getIncidentsByOng = async (id) => {
+  const incidents = await database('incidents').where('ong_id', id).select('*');
+  return incidents;
+};

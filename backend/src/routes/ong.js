@@ -14,4 +14,9 @@ router.post('/ongs', ongController.create);
 // @access  Public
 router.get('/ongs', ongController.getAll);
 
+// @route   GET /ongs/id/incidents
+// @desc    Fetch all incidents of an ong
+// @access  Public
+router.get('/ongs/:id/incidents', ongController.getIncidentsByOng);
+
 export default router;
