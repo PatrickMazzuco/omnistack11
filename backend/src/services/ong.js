@@ -1,11 +1,11 @@
 import database from '../database';
 
-exports.createOng = async (ongData) => {
+exports.create = async (ongData) => {
   const ong = await database('ongs').insert(ongData);
   return ong;
 };
 
-exports.getOngs = async () => {
+exports.getAll = async () => {
   const ongs = await database('ongs').select('*');
   return ongs;
 };

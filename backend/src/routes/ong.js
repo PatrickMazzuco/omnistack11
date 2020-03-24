@@ -7,11 +7,11 @@ const router = Router();
 // @route   POST /ongs
 // @desc    Register ong
 // @access  Public
-router.post('/ongs', ongController.createOng);
+router.post('/ongs', ongController.create);
 
 // @route   GET /ongs
 // @desc    Fetch all ong
 // @access  Public
-router.get('/ongs', ongController.getOngs);
+router.get('/ongs', ongController.getAll);
 
 export default router;
