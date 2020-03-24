@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import ongRouter from './ong';
+import incidentRouter from './incident';
 
 const router = Router();
 
@@ -14,4 +15,5 @@ router.get('/', (req, res) => res.send('API Running'));
 export default (app) => {
   app.use(router);
   app.use(ongRouter);
+  app.use(incidentRouter);
 };
