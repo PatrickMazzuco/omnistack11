@@ -14,4 +14,9 @@ router.post('/incidents', incidentController.create);
 // @access  Public
 router.get('/incidents', incidentController.getAll);
 
+// @route   DELETE /incidents/id
+// @desc    Delete incident by id
+// @access  Public
+router.delete('/incidents/:id', incidentController.delete);
+
 export default router;
