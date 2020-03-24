@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import userRouter from './user';
+import ongRouter from './ong';
 
 const router = Router();
 
@@ -13,5 +13,5 @@ router.get('/', (req, res) => res.send('API Running'));
 
 export default (app) => {
   app.use(router);
-  app.use(userRouter);
+  app.use(ongRouter);
 };
