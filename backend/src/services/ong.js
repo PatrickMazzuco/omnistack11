@@ -16,6 +16,6 @@ exports.getIncidentsByOng = async (id) => {
 };
 
 exports.getById = async (id) => {
-  const ong = await database('ongs').where('id', id).select('*');
+  const ong = await database('ongs').where('id', id).select('*').first();
   return ong;
 };
