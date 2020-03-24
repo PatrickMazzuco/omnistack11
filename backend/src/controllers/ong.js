@@ -46,3 +46,17 @@ exports.getIncidentsByOng = async (req, res) => {
     return res.status(500).json({ message: 'Internal server error.' });
   }
 };
+
+exports.getById = async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    const ong = await ongService.getById(id);
+    if (!ong) return res.status(404).send();
+
+    return ong;
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error.' });
+  }
+};

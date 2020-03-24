@@ -14,6 +14,11 @@ router.post('/ongs', ongController.create);
 // @access  Public
 router.get('/ongs', ongController.getAll);
 
+// @route   GET /ongs/id
+// @desc    Fetch ong by id
+// @access  Public
+router.get('/ongs/:id', ongController.getById);
+
 // @route   GET /ongs/id/incidents
 // @desc    Fetch all incidents of an ong
 // @access  Public
