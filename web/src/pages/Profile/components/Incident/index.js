@@ -1,7 +1,27 @@
 import React from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 
-const Incident = ({ title, description, value }) => {
+import api from '../../../../services/api';
+
+const Incident = props => {
+  const { title, description, value, id } = props.data;
+
+  const handleDelete = async () => {
+    const ongId = localStorage.getItem('ongId');
+    try {
+      await await api.delete(`/incidents/${id}`, {
+        headers: {
+          Authorization: ongId
+        }
+      });
+
+      props.onRemove(id);
+    } catch (err) {
+      console.log(err);
+      alert('Erro ao deletar caso. Tente novamente.');
+    }
+  };
+
   return (
     <>
       <strong>CASO:</strong>
@@ -16,7 +36,7 @@ const Incident = ({ title, description, value }) => {
         }).format(value)}
       </p>
 
-      <button type="button">
+      <button onClick={handleDelete} type="button">
         <FiTrash2 size={20} color="#a8a8b3" />
       </button>
     </>

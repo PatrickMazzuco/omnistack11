@@ -23,6 +23,10 @@ const Profile = () => {
     }
   };
 
+  const removeIncident = id => {
+    setIncidents(incidents.filter(incident => incident.id !== id));
+  };
+
   useEffect(() => {
     fetchIncidents();
   }, []);
@@ -45,11 +49,7 @@ const Profile = () => {
       <ul>
         {incidents.map(incident => (
           <li key={incident.id}>
-            <Incident
-              title={incident.title}
-              description={incident.description}
-              value={incident.value}
-            />
+            <Incident data={incident} onRemove={removeIncident} />
           </li>
         ))}
       </ul>
