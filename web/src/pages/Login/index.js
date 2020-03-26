@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiLogIn } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.svg';
 import heroesImg from '../../assets/heroes.png';
@@ -18,10 +19,10 @@ const Login = () => {
           <button className="button" type="submit">
             Log in
           </button>
-          <a href="/register">
+          <Link to="/register">
             <FiLogIn size={16} color="#e02041" />
             Don't have an account? Sign Up
-          </a>
+          </Link>
         </form>
       </section>
 
