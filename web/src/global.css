@@ -5,6 +5,7 @@
   padding: 0;
   outline: 0;
   box-sizing: border-box;
+  font-family: Roboto, sans-serif;
 }
 
 body {
@@ -15,9 +16,9 @@ body {
 
 button,
 input,
-textarea,
-a {
-  font: 400 18px Roboto, sans-serif;
+textarea {
+  font-weight: 400;
+  font-size: 18px;
 }
 
 button {
@@ -52,4 +53,23 @@ form input {
 
 .button:hover {
   filter: brightness(90%);
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  color: #41414d;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.back-link svg {
+  margin-right: 8px;
+}
+
+.back-link:hover {
+  opacity: 0.8;
 }

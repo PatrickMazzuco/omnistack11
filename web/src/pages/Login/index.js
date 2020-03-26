@@ -14,14 +14,14 @@ const Login = () => {
         <img src={logoImg} alt="Be The Hero" />
 
         <form>
-          <h1>Sign In</h1>
-          <input placeholder="Your ID" type="text" />
+          <h1>Login</h1>
+          <input placeholder="Seu ID" type="text" />
           <button className="button" type="submit">
-            Log in
+            Entrar
           </button>
-          <Link to="/register">
+          <Link className="back-link" to="/register">
             <FiLogIn size={16} color="#e02041" />
-            Don't have an account? Sign Up
+            Não tenho cadastro.
           </Link>
         </form>
       </section>
