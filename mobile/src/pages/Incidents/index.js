@@ -10,18 +10,32 @@ import api from '../../services/api';
 const Incidents = () => {
   const [incidents, setIncidents] = useState([]);
   const [totalIncidents, setTotalIncidents] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
   const navigation = useNavigation();
 
   const navigateToDetail = incident => {
     navigation.navigate('Detail', { incident });
   };
 
+  const loadIncidents = async () => {
+    if (loading) return;
+
+    if (totalIncidents > 0 && incidents.length === totalIncidents) return;
+
+    setLoading(true);
+
+    const response = await api.get('/incidents', {
+      params: { page }
+    });
+    setTotalIncidents(response.headers[['x-total-count']]);
+    setIncidents([...incidents, ...response.data]);
+    setLoading(false);
+    setPage(page + 1);
+  };
+
   useEffect(() => {
-    const loadIncidents = async () => {
-      const response = await api.get('/incidents');
-      setTotalIncidents(response.headers[['x-total-count']]);
-      setIncidents(response.data);
-    };
     loadIncidents();
   }, []);
 
@@ -44,6 +58,8 @@ const Incidents = () => {
         style={styles.incidentList}
         showsVerticalScrollIndicator={false}
         keyExtractor={incident => String(incident.id)}
+        onEndReached={loadIncidents}
+        onEndReachedThreshold={0.2}
         renderItem={({ item: incident }) => (
           <View style={styles.incident}>
             <Text style={styles.incidentProperty}>ONG:</Text>
